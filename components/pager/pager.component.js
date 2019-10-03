@@ -77,7 +77,7 @@ var PagerComponent = (function () {
     };
     PagerComponent.prototype.initPages = function () {
         var pagesCount = this.getLast();
-        var showPagesCount = 4;
+        var showPagesCount = 1;
         showPagesCount = pagesCount < showPagesCount ? pagesCount : showPagesCount;
         this.pages = [];
         if (this.shouldShow()) {
