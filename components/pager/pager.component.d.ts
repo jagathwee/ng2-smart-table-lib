@@ -26,6 +26,8 @@ export declare class PagerComponent implements OnChanges {
     getPage(): number;
     getPages(): Array<any>;
     getLast(): number;
+    getPageStart(): number;
+    getPageEnd(): number;
     isPageOutOfBounce(): boolean;
     initPages(): void;
     onChangePerPage(event: any): void;

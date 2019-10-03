@@ -1701,6 +1701,15 @@ let PagerComponent = class PagerComponent {
     getLast() {
         return Math.ceil(this.count / this.perPage);
     }
+    getPageStart() {
+        return (this.page - 1) * this.perPage + 1;
+    }
+    getPageEnd() {
+        if (this.page * this.perPage >= this.count) {
+            return this.count;
+        }
+        return this.page * this.perPage;
+    }
     isPageOutOfBounce() {
         return (this.page * this.perPage) >= (this.count + this.perPage) && this.page > 1;
     }
@@ -1748,7 +1757,7 @@ __decorate$23([
 PagerComponent = __decorate$23([
     Component({
         selector: 'ng2-smart-table-pager',
-        styles: [".ng2-smart-pagination{display:inline-flex;font-size:.875em;padding:0}.ng2-smart-pagination .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.ng2-smart-pagination .ng2-smart-page-item{display:inline}.ng2-smart-pagination .page-link-next,.ng2-smart-pagination .page-link-prev{font-size:10px}:host{display:flex;justify-content:space-between}:host select{margin:1rem 0 1rem 1rem}:host label{margin:1rem 0 1rem 1rem;line-height:2.5rem} /*# sourceMappingURL=pager.component.css.map */ "],
+        styles: [".ng2-smart-pagination{display:inline-flex;font-size:.875em;padding:0}.ng2-smart-pagination.pagination{float:left}.ng2-smart-pagination.summary{float:right}.ng2-smart-pagination .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.ng2-smart-pagination .ng2-smart-page-item{display:inline}.ng2-smart-pagination .page-link-next,.ng2-smart-pagination .page-link-prev{font-size:10px}:host{display:flex;justify-content:space-between}:host select{margin:1rem 0 1rem 1rem}:host label{margin:1rem 0 1rem 1rem;line-height:2.5rem} /*# sourceMappingURL=pager.component.css.map */ "],
         template: `
     <nav *ngIf="shouldShow()" class="ng2-smart-pagination-nav">
       <ul class="ng2-smart-pagination pagination">
@@ -1783,6 +1792,12 @@ PagerComponent = __decorate$23([
           </a>
         </li>
       </ul>
+      <div class="ng2-smart-pagination summary">
+        &emsp;
+        <span>{{ getPageStart() }}</span> &nbsp;-&nbsp;
+        <span>{{ getPageEnd() }}</span> &nbsp;/&nbsp;
+        <span>{{ count }}</span>
+      </div>
     </nav>
     
     <nav *ngIf="perPageSelect && perPageSelect.length > 0" class="ng2-smart-pagination-per-page">
