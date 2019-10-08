@@ -1,17 +1,22 @@
+.overview {
+  float: right;
+  display: table;
+  height: 30px;
+  width: auto;
+  font-size: .875em;
+ }
+
+.overview .counter {
+  display: table-cell;
+  vertical-align: middle;
+ }
+
 .ng2-smart-pagination {
   display: inline-flex;
   font-size: .875em;
   padding: 0;
 
-  &.pagination {
-    float: left;
-    }
-
-  &.summary {
-    float: right;
-    }
-
-  .sr-only {
+ .sr-only {
     position: absolute;
     width: 1px;
     height: 1px;

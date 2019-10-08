@@ -1757,7 +1757,7 @@ __decorate$23([
 PagerComponent = __decorate$23([
     Component({
         selector: 'ng2-smart-table-pager',
-        styles: [".ng2-smart-pagination{display:inline-flex;font-size:.875em;padding:0}.ng2-smart-pagination.pagination{float:left}.ng2-smart-pagination.summary{float:right}.ng2-smart-pagination .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.ng2-smart-pagination .ng2-smart-page-item{display:inline}.ng2-smart-pagination .page-link-next,.ng2-smart-pagination .page-link-prev{font-size:10px}:host{display:flex;justify-content:space-between}:host select{margin:1rem 0 1rem 1rem}:host label{margin:1rem 0 1rem 1rem;line-height:2.5rem} /*# sourceMappingURL=pager.component.css.map */ "],
+        styles: [".overview{float:right;display:table;height:30px;width:auto;font-size:.875em}.overview .counter{display:table-cell;vertical-align:middle}.ng2-smart-pagination{display:inline-flex;font-size:.875em;padding:0}.ng2-smart-pagination .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.ng2-smart-pagination .ng2-smart-page-item{display:inline}.ng2-smart-pagination .page-link-next,.ng2-smart-pagination .page-link-prev{font-size:10px}:host{display:flex;justify-content:space-between}:host select{margin:1rem 0 1rem 1rem}:host label{margin:1rem 0 1rem 1rem;line-height:2.5rem} /*# sourceMappingURL=pager.component.css.map */ "],
         template: `
     <nav *ngIf="shouldShow()" class="ng2-smart-pagination-nav">
       <ul class="ng2-smart-pagination pagination">
@@ -1777,12 +1777,14 @@ PagerComponent = __decorate$23([
           </a>
         </li>
       </ul>
-      <li class="ng2-smart-pagination summary">
+      <div class="overview">
+        <div class="counter">
         &emsp;
         <span>{{ getPageStart() }}</span> &nbsp;-&nbsp;
         <span>{{ getPageEnd() }}</span> &nbsp;of&nbsp;
         <span>{{ count }}</span>
-      </li>
+       </div>
+      </div>
     </nav>
     
     <nav *ngIf="perPageSelect && perPageSelect.length > 0" class="ng2-smart-pagination-per-page">
@@ -3285,8 +3287,7 @@ class ServerDataSource extends LocalDataSource {
         if (data instanceof Array) {
             return data;
         }
-        throw new Error(`Data must be an array.
-    Please check that data extracted from the server response by the key '${this.conf.dataKey}' exists and is array.`);
+        return [];
     }
     /**
      * Extracts total rows count from the server response
